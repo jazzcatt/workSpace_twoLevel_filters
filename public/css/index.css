@@ -1,0 +1,40 @@
+html, body{
+	height: 100%;
+	width: 100%;
+	margin:0;
+	overflow: hidden;
+}
+
+.header{
+	border: solid 1px;
+	height: 5em;
+}
+
+.header button{
+	display: inline-block;
+	margin: 2% 7%;
+	float: right;
+}
+
+button{
+	font-size: 1.3em;
+	border-radius: 10px;
+	outline: none;
+	background-color: white;
+	width: 15%;
+}
+
+button:hover{
+	cursor: pointer;
+
+}
+
+button.active{
+	background-color:  #ff9980;
+
+}
+
+button.active:before{
+	content: url('../img/check.png');
+}
+
