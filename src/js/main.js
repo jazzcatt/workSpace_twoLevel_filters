@@ -20,16 +20,18 @@ class App extends React.Component {
 		if(e.target.id == this.state.head_menu.last_chosen)
 			return;  // chosen the same button
 
-		this.setState({head_menu:{
-			[e.target.id]:'active',
-			[this.state.last_chosen]:'not_active',
-			last_chosen: [e.target.id]
-			}//head_menu
+		let head_state = this.state.head_menu;
+		head_state[e.target.id] = 'active';
+		head_state[head_state.last_chosen] = 'not_active';
+		head_state.last_chosen = e.target.id;
+
+		this.setState({
+			head_menu: head_state // head_menu
 		}); 
 	}
 	render() {
 		return	<div>
-			 		<Header controls={this.state.head_menu} click={this.headClick.bind(this)}/>
+			 		<Header controls={this.state.head_menu} click={this.headClick.bind(this)} elems={this.state.head_menu}/>
 				</div>
 	}
 }

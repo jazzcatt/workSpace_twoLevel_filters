@@ -1,23 +1,23 @@
 import React from 'react';
+import Button from './button';
 
 export default class Header extends React.Component {
-	constructor(){
-		super();
-		this.state={
-			last_chosen: 'US',
-			US: 'active',
-			JP: 'not_active',
-			KR: 'nor_active'
-		}
-	}
 	onClick(e){
+		console.log(e.target.id);
 		this.props.click(e);
 	}
 	render() {
-		return	<div className='header'>
-					<button onClick={this.onClick.bind(this)} id='US' className={this.props.controls.US}>USA</button>
-					<button onClick={this.onClick.bind(this)} id='JP' className={this.props.controls.JP}>Japan</button>
-					<button onClick={this.onClick.bind(this)} id='KR' className={this.props.controls.KR}>South-Korea</button>
-				</div>
+		let list = [];    // get from object name of props in array
+		for(let key in this.props.elems) {
+			if(key == 'last_chosen') continue;
+			list.push(key);
+		}
+		
+		let elems = list.map((e, num) => { 
+			return <Button name={e} key={num} click={this.onClick.bind(this)} 
+			class={this.props.controls[e]}/>
+		});
+
+		return <div className='header'>{elems}</div>
 	}
 }
