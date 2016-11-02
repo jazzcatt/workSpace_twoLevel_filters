@@ -6,13 +6,6 @@ import Side_menu from './side_menu';
 import Container from './container';
 import data from './data';
 
-var structure = {
-	US: ['Apple','Windows','Dell','IBM'],
-	Japan: ['Casio','Toshiba','Sony'],
-	Korea: ['Samsung']
-}
-
-
 class App extends React.Component {
 	constructor(){
 		super();
@@ -27,6 +20,7 @@ class App extends React.Component {
 			side_menu_fold: false
 		} //state
 	}
+
 	componentDidMount() {
 		// elements initializations head menu
 		let head_elems = this.getHeadElems(this.state.structure);
@@ -34,18 +28,22 @@ class App extends React.Component {
 			head_menu: head_elems,
 			head_menu_state: {last_chosen: head_elems[0], [head_elems[0]]: 'active'}
 		},()=>{    //initialization side_menu
-			let elems = structure[this.state.head_menu_state.last_chosen];
+			let elems = this.state.structure[this.state.head_menu_state.last_chosen];
 			this.setState({side_menu: elems})});
 		}
+
 	getStructure() {                  // in real: fetch from database or selecting necessary fields from JSON     
 		return data.structure;
 	}
+
 	getData() { 
 		return data;
 	}
+
 	fetchData(company) {
 		this.setState({data_map: this.state.data[company]});  
 	}
+
 	getHeadElems(struct) {
 		let head_elems = [];
 		for(let key in struct) {
@@ -65,9 +63,10 @@ class App extends React.Component {
 
 		this.setState({
 			head_menu_state: head_state // head_menu
-			}, ()=>{this.setState({side_menu: structure[this.state.head_menu_state.last_chosen]})}
+			}, ()=>{this.setState({side_menu: this.state.structure[this.state.head_menu_state.last_chosen]})}
 		); //setState 
 	}
+
 	sideClick(e) {
 		if(e.target.id == this.state.side_menu_state.last_chosen)
 			return;
@@ -79,11 +78,13 @@ class App extends React.Component {
 
 		this.setState({side_menu_state: side_state}, this.fetchData(e.target.id));
 	}
+
 	sideMenuTrigger() {
 		this.setState({
 			side_menu_fold: !this.state.side_menu_fold
 		});
 	}
+
 	render() {
 		return	<div>
 			 		<Header controls={this.state.head_menu_state} 

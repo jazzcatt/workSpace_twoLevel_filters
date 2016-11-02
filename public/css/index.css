@@ -52,10 +52,12 @@ button.active:before{
 .menu_trigger span{
  	font-size: 4em;
 }
+
 .menu_trigger:hover{
 	cursor: pointer;
 	background-color: #ff9980; 
 }
+
 .side_menu{
 	position: absolute;
 	float:left;
@@ -93,6 +95,7 @@ button.active:before{
 	font-weight: bolder;
 
 }
+
 .map_elem label{
 	display: block;
 }
