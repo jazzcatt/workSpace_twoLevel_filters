@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Header from './header';
 import Side_menu from './side_menu';
+import Container from './container.js';
 
 var structure = {
 	US: ['Apple','Windows','Dell','IBM'],
@@ -17,11 +18,10 @@ class App extends React.Component {
 		this.state = {
 			structure: structure,
 			head_menu: [],
-			head_menu_state: {
-
-			}, 
+			head_menu_state: {}, 
 			side_menu: [],
-			side_menu_state: {} 
+			side_menu_state: {},
+			side_menu_fold: false
 		} //state
 	}
 	componentDidMount() {
@@ -68,6 +68,11 @@ class App extends React.Component {
 
 		this.setState({side_menu_state: side_state});
 	}
+	sideMenuTrigger() {
+		this.setState({
+			side_menu_fold: !this.state.side_menu_fold
+		});
+	}
 	render() {
 		return	<div>
 			 		<Header controls={this.state.head_menu_state} 
@@ -76,7 +81,10 @@ class App extends React.Component {
 
 			 		<Side_menu controls={this.state.side_menu_state} 
 			 					click={this.sideClick.bind(this)} 
-			 					elems={this.state.side_menu} />
+			 					elems={this.state.side_menu} 
+			 					fold={this.state.side_menu_fold}
+			 					trigger={this.sideMenuTrigger.bind(this)}/>
+			 		<Container />
 				</div>
 	}
 }

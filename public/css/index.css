@@ -46,15 +46,22 @@ button.active:before{
 	width:20%;
 	border-right: solid 1px;
 	height: 5em;
+	text-align: center;
 }
 
+.menu_trigger span{
+ 	font-size: 4em;
+}
+.menu_trigger:hover{
+	cursor: pointer;
+	background-color: #ff9980; 
+}
 .side_menu{
 	position: absolute;
 	float:left;
 	width: 20%;
 	height: 100%;
-	border-right: dashed 1px;
-
+	overflow: scroll;
 }
 
 .side_menu button{
@@ -62,3 +69,15 @@ button.active:before{
 	width: 70%;
 	margin: 5%;
 }
+
+.container{
+	position: absolute;
+	float:right;
+	top: 5.1em;
+	left: 20%;
+	height: 100%;
+	width: 80%;
+	overflow: scroll;
+	border-left: dashed 1px;
+}
+
