@@ -3,7 +3,6 @@ import Button from './button';
 
 export default class Header extends React.Component {
 	onClick(e){
-		console.log(e.target.id);
 		this.props.click(e);
 	}
 	render() {

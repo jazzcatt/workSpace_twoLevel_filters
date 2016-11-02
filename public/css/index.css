@@ -12,7 +12,7 @@ html, body{
 
 .header button{
 	display: inline-block;
-	margin: 2% 7%;
+	margin: 2% 5%;
 	float: right;
 }
 
@@ -39,3 +39,26 @@ button.active:before{
 	content: url('../img/check.png');
 }
 
+.menu_trigger{
+	position:absolute;
+	top:0;
+	left:0;
+	width:20%;
+	border-right: solid 1px;
+	height: 5em;
+}
+
+.side_menu{
+	position: absolute;
+	float:left;
+	width: 20%;
+	height: 100%;
+	border-right: dashed 1px;
+
+}
+
+.side_menu button{
+	display: block;
+	width: 70%;
+	margin: 5%;
+}
