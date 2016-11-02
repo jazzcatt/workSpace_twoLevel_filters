@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 
 import Header from './header';
 import Side_menu from './side_menu';
-import Container from './container.js';
+import Container from './container';
+import data from './data';
 
 var structure = {
 	US: ['Apple','Windows','Dell','IBM'],
@@ -16,7 +17,9 @@ class App extends React.Component {
 	constructor(){
 		super();
 		this.state = {
-			structure: structure,
+			structure: this.getStructure(),
+			data: this.getData(),
+			data_map: [],
 			head_menu: [],
 			head_menu_state: {}, 
 			side_menu: [],
@@ -34,7 +37,15 @@ class App extends React.Component {
 			let elems = structure[this.state.head_menu_state.last_chosen];
 			this.setState({side_menu: elems})});
 		}
-
+	getStructure() {                  // in real: fetch from database or selecting necessary fields from JSON     
+		return data.structure;
+	}
+	getData() { 
+		return data;
+	}
+	fetchData(company) {
+		this.setState({data_map: this.state.data[company]});  
+	}
 	getHeadElems(struct) {
 		let head_elems = [];
 		for(let key in struct) {
@@ -66,7 +77,7 @@ class App extends React.Component {
 		side_state[side_state.last_chosen] = '',
 		side_state.last_chosen = e.target.id;
 
-		this.setState({side_menu_state: side_state});
+		this.setState({side_menu_state: side_state}, this.fetchData(e.target.id));
 	}
 	sideMenuTrigger() {
 		this.setState({
@@ -84,7 +95,7 @@ class App extends React.Component {
 			 					elems={this.state.side_menu} 
 			 					fold={this.state.side_menu_fold}
 			 					trigger={this.sideMenuTrigger.bind(this)}/>
-			 		<Container />
+			 		<Container data={this.state.data_map} />
 				</div>
 	}
 }

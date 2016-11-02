@@ -77,7 +77,29 @@ button.active:before{
 	left: 20%;
 	height: 100%;
 	width: 80%;
+	padding: 7%;
 	overflow: scroll;
 	border-left: dashed 1px;
 }
 
+.map_elem{
+	display: inline-block;
+	width: 190px;
+	height: 230px;
+	border:solid 1px;
+	border-radius: 5px;
+	margin: 5% 5%;
+	padding: 5px;
+	font-weight: bolder;
+
+}
+.map_elem label{
+	display: block;
+}
+
+.map_elem img{
+	width: 140px;
+	height: 160px;
+	display:block;
+	margin:0 auto;
+}
