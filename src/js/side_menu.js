@@ -6,7 +6,6 @@ export default class Side_menu extends React.Component {
 		this.props.click(e);
 	}
 	render() {
-		console.log(this.props.elems);
 		let elems = this.props.elems.map((e, num) => { 
 			return <Button name={e} key={num} click={this.onClick.bind(this)} 
 			class={this.props.controls[e]}
