@@ -79,9 +79,8 @@ button.active:before{
 	left: 20%;
 	height: 100%;
 	width: 80%;
-	padding: 7%;
-	overflow: scroll;
 	border-left: dashed 1px;
+	overflow: scroll;
 }
 
 .map_elem{
@@ -90,7 +89,7 @@ button.active:before{
 	height: 230px;
 	border:solid 1px;
 	border-radius: 5px;
-	margin: 5% 5%;
+	margin: 5% 6%;
 	padding: 5px;
 	font-weight: bolder;
 
